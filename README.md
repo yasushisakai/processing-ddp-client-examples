@@ -7,9 +7,8 @@ Inside the processingMeteorExampleApp is a meteor app that is ready to run. [Ins
 
 * **meteor_connect** : A basic sketch to connect to the Meteor App. It has a DDPListener, which gets update everytime the collection is modified. Note that it does not use the `draw` function, alternatively redraws every time it needs to.
 
-* more to come??
 
 ## TODO
 
-* make more simple examples, meteor_connect is more like java.
+* make more simple examples, meteor_connect is more like java!!!
 * try authenticating.

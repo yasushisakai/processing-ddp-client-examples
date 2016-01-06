@@ -41,28 +41,28 @@ void setup() {
 
   size(640, 480);
 
-  try {
-    client = new DDPClient(this, "localhost", 3000);
-
-    observer = new DDPObserver(this);
-    client.addObserver(observer);
-    //client.toggleDebug();
+  // initialization connects to the server.
+  client = new DDPClient(this, "localhost", 3000);
+  
+  observer = new DDPObserver(this);
+  client.addObserver(observer);
+  //client.toggleDebug(); //this lets you see the communication within the server
     
-  }catch(URISyntaxException e) {
-    println(e.getReason());
-  }
-
   client.subscribe("data", new Object[] {}, observer);
   client.call("addDatum", new Object[] {"processing", "startup"}, observer);
 
   noLoop();
 }
 
-// empty draw necessary even if we "noLoop()"
+/**
+* This app refreshes PGraphics only when DDPObserver wants to. (receive data from server) 
+* draw function is necessary even if noLoop().
+* 
+*/
 void draw() {
 }
 
 void mousePressed() {
-  client.call("deleteAllProcessing", new Object[] {}, observer);
+  client.call("addDatum",new Object[]{"processing","clicked"},observer);
 }
 
